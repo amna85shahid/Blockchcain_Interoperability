@@ -11,7 +11,8 @@ contract UserWallet is NonblockingLzApp {
     mapping(address => uint256) public pendingBurn;
 
     event TokensLocked(address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId);
-    event PayloadSent(uint16 dstChainId, address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 index>    event AckReceived(address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId);
+    event PayloadSent(uint16 dstChainId, address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId);
+    event AckReceived(address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId);
     event TokensBurned(address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId);
     event PayloadDecodeFailed(bytes payload);
 
