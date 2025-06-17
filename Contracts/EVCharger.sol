@@ -24,9 +24,12 @@ contract EVCharger is NonblockingLzApp, AccessControl {
 
     event ReceivedPayload(uint16 srcChainId, bytes srcAddress, uint64 nonce, bytes payload);
     event PaymentStored(uint256 indexed sessionId, address user, uint256 amount, bytes32 indexed stationId);
-    event AckSent(address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId, uint256 f>    event AckDeferred(address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId, uint2>    event MintSuccess(address indexed user,  uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId, uint>    event MintFailed(address indexed user,  uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId, strin>    event DebugStep(string step);
+    event AckSent(address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId, uint256 fee, uint256 timestamp);
+    event AckDeferred(address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId,  uint256 requiredFee, uint64 nonce); 
+    event MintSuccess(address indexed user,  uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId, uint256 timestamp);   
+    event MintFailed(address indexed user,  uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId,  string reason, uint256 timestamp);   
+    event DebugStep(string step);
     event DebugValues(address indexed user, uint256 amount, uint256 indexed sessionId, bytes32 indexed stationId);
-
 
     constructor(address _endpoint, address _token) NonblockingLzApp(_endpoint) {
         token = ITokenBridgeable(_token);
